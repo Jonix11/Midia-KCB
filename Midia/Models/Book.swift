@@ -69,12 +69,10 @@ extension Book: Codable {
         description = try volumeInfoContainer.decodeIfPresent(String.self, forKey: .description)
         
         // Es posible que no haya imageLinkContainer, entonces ponemos try? para asegurarnos que está al hacer el decode
-//        do {
-            let imageLinkContainer = try? volumeInfoContainer.nestedContainer(keyedBy: CodingKeys.self, forKey: .imageLinks)
-            coverURL = try imageLinkContainer?.decodeIfPresent(URL.self, forKey: .coverURL)
-//        } catch {
-//            coverURL = nil
-//        }
+
+        let imageLinkContainer = try? volumeInfoContainer.nestedContainer(keyedBy: CodingKeys.self, forKey: .imageLinks)
+        coverURL = try imageLinkContainer?.decodeIfPresent(URL.self, forKey: .coverURL)
+
         
         rating = try volumeInfoContainer.decodeIfPresent(Float.self, forKey: .rating)
         numberOfReviews = try volumeInfoContainer.decodeIfPresent(Int.self, forKey: .numberOfReviews)
