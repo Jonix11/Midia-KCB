@@ -67,7 +67,31 @@ class GoogleBooksAPIConsumerURLSession: MediaItemAPIConsumable {
     }
     
     func getMediaItem(byId mediaItemId: String, success: @escaping (MediaItemDetailedProvidable) -> Void, failure: @escaping (Error?) -> Void) {
-        // TODO: homework
+        
+        let url = GoogleBooksAPIConstant.urlForBook(withId: mediaItemId)
+        
+        let task = session.dataTask(with: url) { (data, response, error) in
+            // Si hay error, lo paso para arriba con la closure de failure
+            if let error = error {
+                DispatchQueue.main.async { failure(error) }
+                return
+            }
+            
+            if let data = data {
+                do {
+                    let decoder = JSONDecoder()
+                    let book = try decoder.decode(Book.self, from: data)
+                    DispatchQueue.main.async { success(book) } // si bookCollection.items es nil entonces envía una lista vacia
+                } catch {
+                    DispatchQueue.main.async { failure(error) } // Error parseando, lo enviamos para arriba
+                }
+            }
+//            else {
+//                DispatchQueue.main.async { success([]) }
+//            }
+        }
+        task.resume()
+        
     }
     
 }
