@@ -33,7 +33,7 @@ struct Movie {
     
 }
 
-extension Movie: Decodable {
+extension Movie: Codable {
     
     enum CodingKeys: String, CodingKey {
         case movieId = "trackId"
@@ -75,6 +75,23 @@ extension Movie: Decodable {
 
         moviePrice = try container.decodeIfPresent(Float.self, forKey: .moviePrice)
 
+    }
+    
+    func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        if let movieIdInt = Int(movieId) {
+            try container.encode(movieIdInt, forKey: .movieId)
+        }
+        
+        try container.encode(movieTitle, forKey: .movieTitle)
+        
+        try container.encodeIfPresent(movieDirectors?.joined(separator: " & "), forKey: .movieDirectors)
+        if let date = movieReleaseDate {
+            try container.encode(DateFormatter.moviesAPIDateFormatter.string(from: date), forKey: .movieReleaseDate)
+        }
+        try container.encodeIfPresent(movieDescription, forKey: .movieDescription)
+        try container.encodeIfPresent(movieCoverURL, forKey: .movieCoverURL)
+        try container.encodeIfPresent(moviePrice, forKey: .moviePrice)
     }
 }
 

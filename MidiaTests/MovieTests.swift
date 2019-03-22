@@ -12,6 +12,7 @@ import XCTest
 class MovieTests: XCTestCase {
     
     let decoder = JSONDecoder()
+    let encoder = JSONEncoder()
     
     let movieCoverURL = URL(string: "https://is5-ssl.mzstatic.com/image/thumb/Video128/v4/23/b6/bc/23b6bc80-2e6b-1d79-d99f-44d8acdf18fd/source/100x100bb.jpg")
     
@@ -53,8 +54,34 @@ class MovieTests: XCTestCase {
         } catch {
             XCTFail()
         }
-        
-        
+    }
+    
+    func testEncodeMovie() {
+        do {
+            let movieData = try encoder.encode(oneOfMyFavoriteMovies)
+            XCTAssertNotNil(movieData)
+        } catch {
+            XCTFail()
+            
+        }
+    }
+    
+    func testEncodeDecodeMovie() {
+        do {
+            let movieData = try encoder.encode(oneOfMyFavoriteMovies)
+            XCTAssertNotNil(movieData)
+            
+            let movie = try decoder.decode(Movie.self, from: movieData)
+            XCTAssertNotNil(movie.movieId)
+            XCTAssertNotNil(movie.movieTitle)
+            XCTAssert(movie.movieDirectors!.count > 0)
+            XCTAssertNotNil(movie.movieReleaseDate)
+            XCTAssertNotNil(movie.movieDescription)
+            XCTAssertNotNil(movie.movieCoverURL)
+            XCTAssertNotNil(movie.moviePrice)
+        } catch {
+            XCTFail()
+        }
     }
 
 }
