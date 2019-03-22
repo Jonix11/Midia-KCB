@@ -15,8 +15,23 @@
         <attribute name="rating" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
         <relationship name="authors" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Author" inverseName="book" inverseEntity="Author" syncable="YES"/>
     </entity>
+    <entity name="Director" representedClassName="Director" syncable="YES" codeGenerationType="class">
+        <attribute name="fullName" attributeType="String" syncable="YES"/>
+        <relationship name="hasMovie" maxCount="1" deletionRule="Nullify" destinationEntity="Movie" inverseName="hasDirectors" inverseEntity="Movie" syncable="YES"/>
+    </entity>
+    <entity name="Movie" representedClassName="MovieManaged" syncable="YES" codeGenerationType="class">
+        <attribute name="movieCoverURL" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="movieDescription" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="movieId" attributeType="String" syncable="YES"/>
+        <attribute name="moviePrice" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="movieReleaseDate" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="movieTitle" attributeType="String" syncable="YES"/>
+        <relationship name="hasDirectors" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Director" inverseName="hasMovie" inverseEntity="Director" syncable="YES"/>
+    </entity>
     <elements>
-        <element name="Book" positionX="-463.55078125" positionY="-186.58203125" width="128" height="178"/>
         <element name="Author" positionX="-54" positionY="54" width="128" height="75"/>
+        <element name="Book" positionX="-463.55078125" positionY="-186.58203125" width="128" height="178"/>
+        <element name="Movie" positionX="-168.40625" positionY="-189.03515625" width="128" height="148"/>
+        <element name="Director" positionX="-252" positionY="-36" width="128" height="75"/>
     </elements>
 </model>
