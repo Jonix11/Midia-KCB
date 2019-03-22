@@ -24,7 +24,7 @@ class MediaItemProvider {
         case .book:
             self.init(withMediaItemKind: mediaItemKind, apiConsumer: GoogleBooksAPIConsumerURLSession())
         case .movie:
-            self.init(withMediaItemKind: mediaItemKind, apiConsumer: ITunesMoviesAPIConsumerAlamofire())
+            self.init(withMediaItemKind: mediaItemKind, apiConsumer: ITunesMoviesAPIConsumerURLSession())
         case .game:
             fatalError("MediaItemKind not supported yet :( Coming soon")
         }

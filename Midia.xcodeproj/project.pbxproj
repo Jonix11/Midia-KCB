@@ -13,6 +13,7 @@
 		AC19B0202242D4020036F85B /* MovieTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC19B01F2242D4020036F85B /* MovieTests.swift */; };
 		AC19B0222242D7790036F85B /* MovieCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC19B0212242D7790036F85B /* MovieCollection.swift */; };
 		AC19B02422441F3F0036F85B /* ITunesMoviesAPIConsumerAlamofire.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC19B02322441F3F0036F85B /* ITunesMoviesAPIConsumerAlamofire.swift */; };
+		AC404E3922452BC90084B43B /* ITunesMoviesAPIConsumerURLSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC404E3822452BC90084B43B /* ITunesMoviesAPIConsumerURLSession.swift */; };
 		AC73DE232236E37700518B18 /* MediaItemDetailedProvidable.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC73DE222236E37700518B18 /* MediaItemDetailedProvidable.swift */; };
 		AC73DE2522370EF600518B18 /* FavoriteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC73DE2422370EF600518B18 /* FavoriteTableViewCell.swift */; };
 		AC73DE272237122C00518B18 /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC73DE262237122C00518B18 /* FavoritesViewController.swift */; };
@@ -72,6 +73,7 @@
 		AC19B01F2242D4020036F85B /* MovieTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieTests.swift; sourceTree = "<group>"; };
 		AC19B0212242D7790036F85B /* MovieCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieCollection.swift; sourceTree = "<group>"; };
 		AC19B02322441F3F0036F85B /* ITunesMoviesAPIConsumerAlamofire.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ITunesMoviesAPIConsumerAlamofire.swift; sourceTree = "<group>"; };
+		AC404E3822452BC90084B43B /* ITunesMoviesAPIConsumerURLSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ITunesMoviesAPIConsumerURLSession.swift; sourceTree = "<group>"; };
 		AC73DE222236E37700518B18 /* MediaItemDetailedProvidable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaItemDetailedProvidable.swift; sourceTree = "<group>"; };
 		AC73DE2422370EF600518B18 /* FavoriteTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteTableViewCell.swift; sourceTree = "<group>"; };
 		AC73DE262237122C00518B18 /* FavoritesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewController.swift; sourceTree = "<group>"; };
@@ -193,6 +195,7 @@
 				ACB6338E222DC8CF003EE5BC /* GoogleBooksAPIConsumerURLSession.swift */,
 				ACB63392222DDE62003EE5BC /* GoogleBooksAPIConsumerAlamofire.swift */,
 				AC19B02322441F3F0036F85B /* ITunesMoviesAPIConsumerAlamofire.swift */,
+				AC404E3822452BC90084B43B /* ITunesMoviesAPIConsumerURLSession.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -525,6 +528,7 @@
 				ACB63397222DE8CD003EE5BC /* UIImageView+Networking.swift in Sources */,
 				ACB54B782225D15E00518E74 /* DateFormatter+Custom.swift in Sources */,
 				AC73DE232236E37700518B18 /* MediaItemDetailedProvidable.swift in Sources */,
+				AC404E3922452BC90084B43B /* ITunesMoviesAPIConsumerURLSession.swift in Sources */,
 				AC73DE342238550C00518B18 /* CoreDataStack.swift in Sources */,
 				AC73EB762228788A00A655FD /* Game.swift in Sources */,
 				AC73DE272237122C00518B18 /* FavoritesViewController.swift in Sources */,
