@@ -51,6 +51,7 @@
 		ACB6339B222F0CDF003EE5BC /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB6339A222F0CDF003EE5BC /* SearchViewController.swift */; };
 		ACB6339D222F1CBF003EE5BC /* Detail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ACB6339C222F1CBF003EE5BC /* Detail.storyboard */; };
 		ACB6339F222F1CFA003EE5BC /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB6339E222F1CFA003EE5BC /* DetailViewController.swift */; };
+		ACD62B3F2247EB5F00DF8DE6 /* NewDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ACD62B3E2247EB5F00DF8DE6 /* NewDetail.storyboard */; };
 		C403BE5E9D97694250B77E55 /* Pods_Midia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95F4AE8BB664F516B5AB6DB7 /* Pods_Midia.framework */; };
 /* End PBXBuildFile section */
 
@@ -116,6 +117,7 @@
 		ACB6339A222F0CDF003EE5BC /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		ACB6339C222F1CBF003EE5BC /* Detail.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Detail.storyboard; sourceTree = "<group>"; };
 		ACB6339E222F1CFA003EE5BC /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		ACD62B3E2247EB5F00DF8DE6 /* NewDetail.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = NewDetail.storyboard; sourceTree = "<group>"; };
 		B9549057E14F267212F7D185 /* Pods-MidiaTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MidiaTests.debug.xcconfig"; path = "Target Support Files/Pods-MidiaTests/Pods-MidiaTests.debug.xcconfig"; sourceTree = "<group>"; };
 		D867CC4F3748C5A489F33607 /* Pods-Midia.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Midia.release.xcconfig"; path = "Target Support Files/Pods-Midia/Pods-Midia.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -294,6 +296,7 @@
 			children = (
 				ACB54B4D2225B58D00518E74 /* Main.storyboard */,
 				ACB6339C222F1CBF003EE5BC /* Detail.storyboard */,
+				ACD62B3E2247EB5F00DF8DE6 /* NewDetail.storyboard */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -411,6 +414,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ACD62B3F2247EB5F00DF8DE6 /* NewDetail.storyboard in Resources */,
 				ACB54B542225B58D00518E74 /* LaunchScreen.storyboard in Resources */,
 				ACB63399222F09C8003EE5BC /* placeholder.png in Resources */,
 				ACB54B512225B58D00518E74 /* Assets.xcassets in Resources */,

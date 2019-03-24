@@ -20,7 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             let searchViewController = tabBarController.viewControllers?[1] as? SearchViewController else {
                 fatalError("Wrong initial setup")
         }
-        let currentMediaItemProvider = MediaItemProvider(withMediaItemKind: .movie)
+        let currentMediaItemProvider = MediaItemProvider(withMediaItemKind: .book)
         homeViewController.mediaItemProvider = currentMediaItemProvider
         searchViewController.mediaItemProvider = currentMediaItemProvider
         
