@@ -19,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="07R-qJ-w98">
-                                <rect key="frame" x="0.0" y="44" width="375" height="685"/>
+                                <rect key="frame" x="0.0" y="72" width="375" height="657"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="VWv-cW-DJW">
                                     <size key="itemSize" width="150" height="200"/>
@@ -35,7 +35,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="150" height="200"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="pbx-jx-69g">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholder.png" translatesAutoresizingMaskIntoConstraints="NO" id="pbx-jx-69g">
                                                     <rect key="frame" x="0.0" y="0.0" width="150" height="170"/>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d6Z-Ar-X2W">
@@ -80,19 +80,31 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="WmY-MX-oo1">
+                                <rect key="frame" x="130" y="44" width="115" height="29"/>
+                                <segments>
+                                    <segment title="Books"/>
+                                    <segment title="Movies"/>
+                                </segments>
+                                <connections>
+                                    <action selector="changeMediaItem:" destination="BYZ-38-t0r" eventType="valueChanged" id="cLZ-O3-kVL"/>
+                                </connections>
+                            </segmentedControl>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="79J-qo-9KA" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="5e7-sL-cmW"/>
+                            <constraint firstItem="WmY-MX-oo1" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="784-LD-PFo"/>
                             <constraint firstItem="79J-qo-9KA" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="9jK-la-tTM"/>
                             <constraint firstItem="2A2-vT-pAr" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="Ahv-Yi-8R3"/>
                             <constraint firstItem="Tg4-Hf-GIe" firstAttribute="top" secondItem="79J-qo-9KA" secondAttribute="bottom" constant="12" id="AmB-2o-BoL"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Tg4-Hf-GIe" secondAttribute="trailing" constant="15" id="CHq-zP-d8g"/>
                             <constraint firstItem="07R-qJ-w98" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="F1T-6c-S8Z"/>
                             <constraint firstItem="07R-qJ-w98" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="G8W-0w-HqZ"/>
-                            <constraint firstItem="07R-qJ-w98" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="HED-1A-O3t"/>
+                            <constraint firstItem="07R-qJ-w98" firstAttribute="top" secondItem="WmY-MX-oo1" secondAttribute="bottom" id="dSc-sJ-q4O"/>
                             <constraint firstItem="2A2-vT-pAr" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="evu-zu-7Fz"/>
                             <constraint firstItem="Tg4-Hf-GIe" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="15" id="gab-A0-Jyk"/>
+                            <constraint firstItem="WmY-MX-oo1" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="sRM-R7-7lK"/>
                             <constraint firstItem="07R-qJ-w98" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="yBD-Mc-Zdg"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -102,6 +114,7 @@
                         <outlet property="activityIndicatorView" destination="2A2-vT-pAr" id="nXT-Xt-zqe"/>
                         <outlet property="collectionView" destination="07R-qJ-w98" id="loV-bE-5IZ"/>
                         <outlet property="failureEmojiLabel" destination="79J-qo-9KA" id="7BC-c7-ZTs"/>
+                        <outlet property="mediaItemChanger" destination="WmY-MX-oo1" id="N21-GM-QDy"/>
                         <outlet property="statusLabel" destination="Tg4-Hf-GIe" id="0Vn-HI-FRD"/>
                     </connections>
                 </viewController>
@@ -138,14 +151,14 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <searchBar contentMode="redraw" placeholder="Introduzca título, autor o personaje" translatesAutoresizingMaskIntoConstraints="NO" id="t8m-mJ-UKX">
-                                <rect key="frame" x="0.0" y="44" width="375" height="56"/>
+                                <rect key="frame" x="0.0" y="77" width="375" height="56"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="56" id="NUR-oX-8FA"/>
                                 </constraints>
                                 <textInputTraits key="textInputTraits"/>
                             </searchBar>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="0Qf-2Z-Qro">
-                                <rect key="frame" x="0.0" y="100" width="375" height="629"/>
+                                <rect key="frame" x="0.0" y="133" width="375" height="596"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="KbZ-kV-dHa">
                                     <size key="itemSize" width="150" height="200"/>
@@ -195,6 +208,16 @@
                                 <rect key="frame" x="169" y="387.66666666666669" width="37" height="37"/>
                                 <color key="color" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </activityIndicatorView>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="kD2-ah-wvF">
+                                <rect key="frame" x="130" y="44" width="115" height="29"/>
+                                <segments>
+                                    <segment title="Books"/>
+                                    <segment title="Movies"/>
+                                </segments>
+                                <connections>
+                                    <action selector="changeMediaItem:" destination="7kF-ha-aLe" eventType="valueChanged" id="5Xf-xd-iJc"/>
+                                </connections>
+                            </segmentedControl>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -202,11 +225,13 @@
                             <constraint firstItem="0Qf-2Z-Qro" firstAttribute="trailing" secondItem="4vc-C3-Pac" secondAttribute="trailing" id="Cne-IQ-Nv1"/>
                             <constraint firstItem="0Qf-2Z-Qro" firstAttribute="top" secondItem="t8m-mJ-UKX" secondAttribute="bottom" id="DFP-zq-7pP"/>
                             <constraint firstItem="qIX-0f-XoP" firstAttribute="centerX" secondItem="9mt-V0-usg" secondAttribute="centerX" id="EVq-kU-aew"/>
+                            <constraint firstItem="kD2-ah-wvF" firstAttribute="top" secondItem="4vc-C3-Pac" secondAttribute="top" id="RxP-pF-QnI"/>
                             <constraint firstItem="t8m-mJ-UKX" firstAttribute="leading" secondItem="4vc-C3-Pac" secondAttribute="leading" id="dFk-N9-acE"/>
                             <constraint firstItem="t8m-mJ-UKX" firstAttribute="trailing" secondItem="4vc-C3-Pac" secondAttribute="trailing" id="eXo-AA-zef"/>
+                            <constraint firstItem="kD2-ah-wvF" firstAttribute="centerX" secondItem="9mt-V0-usg" secondAttribute="centerX" id="pv9-4o-oc4"/>
                             <constraint firstItem="0Qf-2Z-Qro" firstAttribute="bottom" secondItem="4vc-C3-Pac" secondAttribute="bottom" id="qkf-wJ-Iiy"/>
                             <constraint firstItem="0Qf-2Z-Qro" firstAttribute="leading" secondItem="4vc-C3-Pac" secondAttribute="leading" id="sJM-tF-Y6B"/>
-                            <constraint firstItem="t8m-mJ-UKX" firstAttribute="top" secondItem="4vc-C3-Pac" secondAttribute="top" id="uEV-2m-tPv"/>
+                            <constraint firstItem="t8m-mJ-UKX" firstAttribute="top" secondItem="kD2-ah-wvF" secondAttribute="bottom" constant="5" id="uVQ-vG-WA9"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="4vc-C3-Pac"/>
                     </view>
@@ -214,6 +239,7 @@
                     <connections>
                         <outlet property="activityIndicator" destination="qIX-0f-XoP" id="7E5-q1-psZ"/>
                         <outlet property="collectionView" destination="0Qf-2Z-Qro" id="Ewa-Rd-68x"/>
+                        <outlet property="mediaItemChanger" destination="kD2-ah-wvF" id="8Fo-Fd-VvA"/>
                         <outlet property="searchBar" destination="t8m-mJ-UKX" id="NKO-d1-BFq"/>
                     </connections>
                 </viewController>
@@ -230,7 +256,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="160" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="qdd-tO-s8q">
-                                <rect key="frame" x="0.0" y="44" width="375" height="685"/>
+                                <rect key="frame" x="0.0" y="72" width="375" height="657"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <view key="tableHeaderView" contentMode="scaleToFill" id="rcY-fJ-6yx">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
@@ -319,18 +345,31 @@
                                     <outlet property="delegate" destination="WX7-Lw-0JD" id="8Vf-Vi-ECr"/>
                                 </connections>
                             </tableView>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="TJu-wX-H9c">
+                                <rect key="frame" x="130" y="44" width="115" height="29"/>
+                                <segments>
+                                    <segment title="Books"/>
+                                    <segment title="Movies"/>
+                                </segments>
+                                <connections>
+                                    <action selector="changeMediaItem:" destination="WX7-Lw-0JD" eventType="valueChanged" id="ReU-Tu-OCI"/>
+                                </connections>
+                            </segmentedControl>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="TJu-wX-H9c" firstAttribute="centerX" secondItem="bel-5d-Nfo" secondAttribute="centerX" id="5dq-hg-Rl4"/>
+                            <constraint firstItem="TJu-wX-H9c" firstAttribute="top" secondItem="Vie-I7-vEs" secondAttribute="top" id="WW6-SE-3T3"/>
                             <constraint firstItem="qdd-tO-s8q" firstAttribute="leading" secondItem="Vie-I7-vEs" secondAttribute="leading" id="Zje-RD-MdU"/>
                             <constraint firstItem="qdd-tO-s8q" firstAttribute="trailing" secondItem="Vie-I7-vEs" secondAttribute="trailing" id="gwS-sG-LgD"/>
+                            <constraint firstItem="qdd-tO-s8q" firstAttribute="top" secondItem="TJu-wX-H9c" secondAttribute="bottom" id="leQ-QI-cPa"/>
                             <constraint firstItem="qdd-tO-s8q" firstAttribute="bottom" secondItem="Vie-I7-vEs" secondAttribute="bottom" id="moh-Ew-GYD"/>
-                            <constraint firstItem="qdd-tO-s8q" firstAttribute="top" secondItem="Vie-I7-vEs" secondAttribute="top" id="xjA-cb-JmT"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Vie-I7-vEs"/>
                     </view>
                     <tabBarItem key="tabBarItem" systemItem="favorites" id="eRP-fG-7gp"/>
                     <connections>
+                        <outlet property="mediaItemChanger" destination="TJu-wX-H9c" id="7Ay-RL-Lj3"/>
                         <outlet property="tableView" destination="qdd-tO-s8q" id="HOK-w5-3Rl"/>
                     </connections>
                 </viewController>

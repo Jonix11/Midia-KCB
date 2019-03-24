@@ -15,7 +15,7 @@ class GoogleBooksAPIConsumerAlamofire: MediaItemAPIConsumable {
     
     func getLatesMediaItems(onSuccess success: @escaping ([MediaItemProvidable]) -> Void, failure: @escaping (Error?) -> Void) {
         
-        Alamofire.request(GoogleBooksAPIConstant.getAbsoluteURL(withQueryParams: ["2010"])).responseData { (response) in
+        Alamofire.request(GoogleBooksAPIConstant.getAbsoluteURL(withQueryParams: ["swift", "apple"])).responseData { (response) in
             switch response.result {
             case .failure(let error):
                 failure(error)

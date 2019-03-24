@@ -27,6 +27,7 @@ class DetailViewController: UIViewController {
     var mediaItemId: String!
     var mediaItemProvider: MediaItemProvider! // Debería ser opcional
     var detailedMediaItem: MediaItemDetailedProvidable?
+    var mediaKind: MediaItemKind!
     
     var isFavorite: Bool = false
     
@@ -39,25 +40,33 @@ class DetailViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        if let favorite = StorageManager.shared.getFavorite(byId: mediaItemId) {
+        if let favorite = StorageManager.sharedBook.getFavorite(byId: mediaItemId) {
             detailedMediaItem = favorite
             syncViewWithModel()
-            loadingView.isHidden = true
             isFavorite = true
             toggleFavoriteButton.setTitle("Remove favorite", for: .normal)
+            loadingView.isHidden = true
         } else {
-            mediaItemProvider.getMediaItem(byId: mediaItemId, success: { [weak self] (detailedMediaItem) in
-                self?.loadingView.isHidden = true
-                self?.detailedMediaItem = detailedMediaItem
-                self?.syncViewWithModel()
-            }) { [weak self] (error) in
-                //self?.loadingView.isHidden = true
-                // Creo una alerta, le añado acción con el handler y presento la alerta
-                let alertController = UIAlertController(title: nil, message: "Error recuperando media item", preferredStyle: .alert)
-                alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: { (_) in
-                    self?.dismiss(animated: true, completion: nil)
-                }))
-                self?.present(alertController, animated: true, completion: nil)
+            if let favorite = StorageManager.sharedMovie.getFavorite(byId: mediaItemId) {
+                detailedMediaItem = favorite
+                syncViewWithModel()
+                isFavorite = true
+                toggleFavoriteButton.setTitle("Remove favorite", for: .normal)
+                loadingView.isHidden = true
+            } else {
+                mediaItemProvider.getMediaItem(byId: mediaItemId, success: { [weak self] (detailedMediaItem) in
+                    self?.detailedMediaItem = detailedMediaItem
+                    self?.syncViewWithModel()
+                    self?.loadingView.isHidden = true
+                }) { [weak self] (error) in
+                    //self?.loadingView.isHidden = true
+                    // Creo una alerta, le añado acción con el handler y presento la alerta
+                    let alertController = UIAlertController(title: nil, message: "Error recuperando media item", preferredStyle: .alert)
+                    alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: { (_) in
+                        self?.dismiss(animated: true, completion: nil)
+                    }))
+                    self?.present(alertController, animated: true, completion: nil)
+                }
             }
         }
         
@@ -95,7 +104,14 @@ class DetailViewController: UIViewController {
         }
         
         if let creationDate = mediaItem.creationDate {
-            creationDateLabel.text = DateFormatter.booksAPIDateFormatter.string(from: creationDate)
+            switch mediaKind {
+            case .book?:
+                creationDateLabel.text = "Published on \(DateFormatter.booksAPIDateFormatter.string(from: creationDate))"
+            case .movie?:
+                creationDateLabel.text = "Released on \(DateFormatter.booksAPIDateFormatter.string(from: creationDate))"
+            default:
+                creationDateLabel.text = DateFormatter.booksAPIDateFormatter.string(from: creationDate)
+            }
         } else {
             creationDateLabel.isHidden = true
         }
@@ -120,10 +136,25 @@ class DetailViewController: UIViewController {
         }
         isFavorite.toggle()
         if isFavorite {
-            StorageManager.shared.add(favorite: favorite)
+            switch mediaKind {
+            case .book?:
+                StorageManager.sharedBook.add(favorite: favorite)
+            case .movie?:
+                StorageManager.sharedMovie.add(favorite: favorite)
+            default:
+                fatalError("Media item not supported yet")
+            }
+            
             toggleFavoriteButton.setTitle("Remove favorite", for: .normal)
         } else {
-            StorageManager.shared.remove(favoriteWithId: favorite.mediaItemId)
+            switch mediaKind {
+            case .book?:
+                StorageManager.sharedBook.remove(favoriteWithId: favorite.mediaItemId)
+            case .movie?:
+                StorageManager.sharedMovie.remove(favoriteWithId: favorite.mediaItemId)
+            default:
+                fatalError("Media item not supported yet")
+            }
             toggleFavoriteButton.setTitle("Add favorite", for: .normal)
         }
     }

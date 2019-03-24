@@ -11,11 +11,28 @@ import UIKit
 class SearchViewController: UIViewController {
     
     let mediaItemCellReuseIdentifier = "mediaItemCellIdentifier"
-    
+    // MARK: - Outlets
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    @IBOutlet weak var mediaItemChanger: UISegmentedControl!
     
+    // MARK: Actions
+    @IBAction func changeMediaItem(_ sender: Any) {
+        if mediaItemChanger.selectedSegmentIndex == 0 {
+            mediaItemProvider = MediaItemProvider(withMediaItemKind: .book)
+        } else {
+            mediaItemProvider = MediaItemProvider(withMediaItemKind: .movie)
+        }
+        
+        if searchBar.text?.count == 0 {
+            mediaItems = []
+            collectionView.reloadData()
+        } else {
+            loadMediaItems()
+        }
+        
+    }
     
     var mediaItemProvider: MediaItemProvider!
     var mediaItems: [MediaItemProvidable] = []
@@ -59,6 +76,7 @@ extension SearchViewController: UICollectionViewDelegate {
         let mediaItem = mediaItems[indexPath.item]
         detailViewController.mediaItemId = mediaItem.mediaItemId
         detailViewController.mediaItemProvider = mediaItemProvider
+        detailViewController.mediaKind = mediaItemProvider.mediaItemKind
         // Lo mostramos
         // Muestra, en este caso un detailViewController, de manera modal, es decir, sin un navigationController
         // Ocupa toda la pantalla
@@ -70,7 +88,13 @@ extension SearchViewController: UICollectionViewDelegate {
 extension SearchViewController: UISearchBarDelegate {
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+         loadMediaItems()
         
+    }
+}
+
+extension SearchViewController {
+    private func loadMediaItems() {
         guard let queryParams = searchBar.text, !queryParams.isEmpty else {
             return
         }

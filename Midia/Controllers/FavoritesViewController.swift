@@ -10,19 +10,21 @@ import UIKit
 
 class FavoritesViewController: UIViewController {
     
+    // MARK: - Outlets
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var mediaItemChanger: UISegmentedControl!
     
+    // MARK: Actions
+    @IBAction func changeMediaItem(_ sender: Any) {
+        loadMediaItems()
+    }
     let favoriteCellReuseIdentifier = "favoriteCellReuseIdentifier"
     
     var favorites: [MediaItemDetailedProvidable] = []
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
-        if let storedFavorites = StorageManager.shared.getFavorites() {
-            favorites = storedFavorites
-            tableView.reloadData()
-        }
+        loadMediaItems()
     }
     
 }
@@ -36,6 +38,11 @@ extension FavoritesViewController: UITableViewDelegate {
         
         let mediaItem = favorites[indexPath.row]
         detailViewController.mediaItemId = mediaItem.mediaItemId
+        if mediaItemChanger.selectedSegmentIndex == 0 {
+            detailViewController.mediaKind = .book
+        } else {
+            detailViewController.mediaKind = .movie
+        }
 
         present(detailViewController, animated: true, completion: nil)
     }
@@ -56,4 +63,20 @@ extension FavoritesViewController: UITableViewDataSource {
     }
     
     
+}
+
+extension FavoritesViewController {
+    private func loadMediaItems() {
+        if mediaItemChanger.selectedSegmentIndex == 0 {
+            if let storedFavorites = StorageManager.sharedBook.getFavorites() {
+                favorites = storedFavorites
+                tableView.reloadData()
+            }
+        } else {
+            if let storedFavorites = StorageManager.sharedMovie.getFavorites() {
+                favorites = storedFavorites
+                tableView.reloadData()
+            }
+        }
+    }
 }

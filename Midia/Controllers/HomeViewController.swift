@@ -26,7 +26,17 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var activityIndicatorView: UIActivityIndicatorView!
     @IBOutlet weak var failureEmojiLabel: UILabel!
     @IBOutlet weak var statusLabel: UILabel!
+    @IBOutlet weak var mediaItemChanger: UISegmentedControl!
     
+    @IBAction func changeMediaItem(_ sender: Any) {
+        if mediaItemChanger.selectedSegmentIndex == 0 {
+            mediaItemProvider = MediaItemProvider(withMediaItemKind: .book)
+        } else {
+            mediaItemProvider = MediaItemProvider(withMediaItemKind: .movie)
+        }
+        loadMediaItems()
+        
+    }
     
     var state: MediaItemViewControllerState = .ready {
         willSet {
@@ -64,19 +74,7 @@ class HomeViewController: UIViewController {
         collectionView.delegate = self
         collectionView.dataSource = self
         
-        state = .loading
-        mediaItemProvider.getHomeMediaItems(onSuccess: { [weak self] (mediaItems) in
-            self?.mediaItems = mediaItems
-            self?.state = mediaItems.count > 0 ? .ready : .noResult
-            // La línea de arriba hace lo mismo que el if else de abajo comentado
-//            if mediaItems.count > 0 {
-//                self?.state = .ready
-//            } else {
-//                self?.state = .noResult
-//            }
-        }, failure: { [weak self] (error) in
-            self?.state = .failure
-        })
+        loadMediaItems()
     }
 }
 
@@ -92,6 +90,7 @@ extension HomeViewController: UICollectionViewDelegate {
         let mediaItem = mediaItems[indexPath.item]
         detailViewController.mediaItemId = mediaItem.mediaItemId
         detailViewController.mediaItemProvider = mediaItemProvider
+        detailViewController.mediaKind = mediaItemProvider.mediaItemKind
         // Lo mostramos
         // Muestra, en este caso un detailViewController, de manera modal, es decir, sin un navigationController
         // Ocupa toda la pantalla
@@ -119,6 +118,24 @@ extension HomeViewController: UICollectionViewDataSource {
         return cell
         
     }
-    
-    
+}
+
+extension HomeViewController {
+    private func loadMediaItems() {
+        
+        state = .loading
+        mediaItemProvider.getHomeMediaItems(onSuccess: { [weak self] (mediaItems) in
+            self?.mediaItems = mediaItems
+            self?.state = mediaItems.count > 0 ? .ready : .noResult
+            // La línea de arriba hace lo mismo que el if else de abajo comentado
+            //            if mediaItems.count > 0 {
+            //                self?.state = .ready
+            //            } else {
+            //                self?.state = .noResult
+            //            }
+            }, failure: { [weak self] (error) in
+                self?.state = .failure
+        })
+        
+    }
 }
