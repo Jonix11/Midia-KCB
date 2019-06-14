@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="2rM-p7-UWu">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="2rM-p7-UWu">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -40,7 +40,7 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="oD3-YD-J8t">
                                 <rect key="frame" x="16" y="63" width="197" height="180"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Authors Label" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b7Z-l2-98H">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Authors Label" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b7Z-l2-98H">
                                         <rect key="frame" x="0.0" y="0.0" width="197" height="60"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="19"/>
                                         <color key="textColor" red="0.1215686275" green="0.12941176469999999" blue="0.14117647059999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -63,7 +63,7 @@
                                             </label>
                                         </subviews>
                                     </stackView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hzn-Km-h7I">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date Label" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hzn-Km-h7I">
                                         <rect key="frame" x="0.0" y="120" width="197" height="60"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" red="0.1215686275" green="0.12941176469999999" blue="0.14117647059999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -81,25 +81,33 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="8wz-Ly-tu6">
-                                <rect key="frame" x="16" y="313" width="343" height="275"/>
+                                <rect key="frame" x="16" y="313" width="343" height="252"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="15"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yen-sO-3Bl">
-                                <rect key="frame" x="25" y="603" width="86" height="32"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
-                                <state key="normal" title="Buy Button"/>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ois-cV-ApF">
-                                <rect key="frame" x="253" y="603" width="97" height="32"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
-                                <state key="normal" title="Add Favorite"/>
-                                <connections>
-                                    <action selector="didTapToggleFavorite:" destination="2rM-p7-UWu" eventType="touchUpInside" id="Gvo-zT-lhc"/>
-                                </connections>
-                            </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="Mjc-Fe-6gW">
+                                <rect key="frame" x="16" y="615" width="343" height="32"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yen-sO-3Bl">
+                                        <rect key="frame" x="0.0" y="0.0" width="171.5" height="32"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                                        <state key="normal" title="Buy Button"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ois-cV-ApF">
+                                        <rect key="frame" x="171.5" y="0.0" width="171.5" height="32"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                                        <state key="normal" title="Add Favorite"/>
+                                        <connections>
+                                            <action selector="didTapToggleFavorite:" destination="2rM-p7-UWu" eventType="touchUpInside" id="Gvo-zT-lhc"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="343" id="IY5-BE-Y4c"/>
+                                </constraints>
+                            </stackView>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LYl-r0-mv4">
                                 <rect key="frame" x="0.0" y="63" width="375" height="604"/>
                                 <subviews>
@@ -121,24 +129,21 @@
                             <constraint firstItem="k8I-Ot-0bq" firstAttribute="top" secondItem="oD3-YD-J8t" secondAttribute="top" id="1uV-lD-eUJ"/>
                             <constraint firstItem="v6l-O4-QwL" firstAttribute="trailing" secondItem="k8I-Ot-0bq" secondAttribute="trailing" constant="16" id="3qP-pT-CQL"/>
                             <constraint firstItem="k8I-Ot-0bq" firstAttribute="leading" secondItem="oD3-YD-J8t" secondAttribute="trailing" constant="16" id="5BF-vg-cb2"/>
+                            <constraint firstItem="v6l-O4-QwL" firstAttribute="bottom" secondItem="Mjc-Fe-6gW" secondAttribute="bottom" constant="20" id="6cU-cs-QGB"/>
                             <constraint firstItem="8wz-Ly-tu6" firstAttribute="leading" secondItem="v6l-O4-QwL" secondAttribute="leading" constant="16" id="9L3-LX-Edt"/>
                             <constraint firstItem="abM-xj-6Uu" firstAttribute="top" secondItem="k8I-Ot-0bq" secondAttribute="bottom" constant="20" id="Lpg-65-8XD"/>
                             <constraint firstItem="LYl-r0-mv4" firstAttribute="bottom" secondItem="v6l-O4-QwL" secondAttribute="bottom" id="OsS-CS-PFj"/>
-                            <constraint firstItem="Yen-sO-3Bl" firstAttribute="leading" secondItem="v6l-O4-QwL" secondAttribute="leading" constant="25" id="QGU-ON-Xyg"/>
                             <constraint firstItem="n2Y-Pi-65f" firstAttribute="leading" secondItem="v6l-O4-QwL" secondAttribute="leading" constant="20" id="R2d-8G-AnM"/>
                             <constraint firstItem="oD3-YD-J8t" firstAttribute="top" secondItem="n2Y-Pi-65f" secondAttribute="bottom" id="Se5-Hv-O4F"/>
+                            <constraint firstItem="Mjc-Fe-6gW" firstAttribute="top" secondItem="8wz-Ly-tu6" secondAttribute="bottom" constant="50" id="TUr-Mu-xhn"/>
                             <constraint firstItem="8wz-Ly-tu6" firstAttribute="top" secondItem="abM-xj-6Uu" secondAttribute="bottom" constant="20" id="Wve-Nf-hjR"/>
                             <constraint firstItem="LYl-r0-mv4" firstAttribute="leading" secondItem="v6l-O4-QwL" secondAttribute="leading" id="XBd-O0-o0q"/>
                             <constraint firstItem="LYl-r0-mv4" firstAttribute="top" secondItem="n2Y-Pi-65f" secondAttribute="bottom" id="XpW-IS-YlN"/>
-                            <constraint firstItem="v6l-O4-QwL" firstAttribute="trailing" secondItem="Ois-cV-ApF" secondAttribute="trailing" constant="25" id="e3g-Kk-BX0"/>
+                            <constraint firstItem="Mjc-Fe-6gW" firstAttribute="centerX" secondItem="Bq6-bt-9aO" secondAttribute="centerX" id="dZw-9p-lSz"/>
                             <constraint firstItem="v6l-O4-QwL" firstAttribute="trailing" secondItem="8wz-Ly-tu6" secondAttribute="trailing" constant="16" id="fOa-2e-fAM"/>
-                            <constraint firstItem="Yen-sO-3Bl" firstAttribute="top" secondItem="8wz-Ly-tu6" secondAttribute="bottom" constant="15" id="g3q-cf-RLg"/>
-                            <constraint firstItem="Ois-cV-ApF" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Yen-sO-3Bl" secondAttribute="trailing" constant="20" id="hcB-fc-RYu"/>
                             <constraint firstItem="LYl-r0-mv4" firstAttribute="trailing" secondItem="v6l-O4-QwL" secondAttribute="trailing" id="q70-0w-vxP"/>
-                            <constraint firstItem="Ois-cV-ApF" firstAttribute="top" secondItem="Yen-sO-3Bl" secondAttribute="top" id="qYf-qG-h82"/>
                             <constraint firstItem="abM-xj-6Uu" firstAttribute="leading" secondItem="v6l-O4-QwL" secondAttribute="leading" constant="16" id="tVs-iM-8IW"/>
                             <constraint firstItem="oD3-YD-J8t" firstAttribute="leading" secondItem="v6l-O4-QwL" secondAttribute="leading" constant="16" id="ww9-uf-Gr4"/>
-                            <constraint firstItem="v6l-O4-QwL" firstAttribute="bottom" secondItem="Yen-sO-3Bl" secondAttribute="bottom" constant="32" id="x1n-dF-c0q"/>
                             <constraint firstItem="n2Y-Pi-65f" firstAttribute="top" secondItem="v6l-O4-QwL" secondAttribute="top" constant="5" id="xU0-Tx-J10"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="v6l-O4-QwL"/>
